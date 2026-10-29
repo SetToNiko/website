@@ -1,5 +1,9 @@
 {
     "name": "personal-website",
     "version": "0.0.0",
-    "private": "true"
+    "private": "true",
+    "devDependencies": {
+        "@commitlint/cli": "^21.2.4",
+        "@commitlint/config-conventional": "^21.2.4"
+    }
 }
