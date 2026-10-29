@@ -1,3 +1,4 @@
-import { version } from '../package.json' with {type: "json"};
+import projectInfo from '../package.json' with {type: "json"};
 
-console.log(version);
+console.log(projectInfo);
+console.log(projectInfo.version);
