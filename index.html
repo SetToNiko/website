@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neovim Startup Dashboard</title>
+    <title>NK</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./style.css">
@@ -15,11 +15,6 @@
 
 <body>
 
-    <!-- Terminal Window Shell -->
-    <!-- <div class="terminal-container"> -->
-    <!--      Main Viewport -->
-    <!--     <div class="nvim-viewport"> -->
-    <!-- Dashboard Center View -->
     <main class="dashboard-content">
 
         <!-- Neovim ASCII Art Header -->
@@ -39,54 +34,65 @@
         </h1>
         <!-- Nav/panel -->
         <div class="action-panel">
-            <nav class="action-list" aria-label="Navigation">
+            <nav aria-label="Navigation">
+                <ul class="action-list">
+                    <li>
+                        <a href="" class="action-item">
+                            <div class="label-group">
+                                <span class="prefix">type</span>
+                                <span class="leader">:</span>
+                                <span class="command">about</span>
+                                <span class="leader">&lt;Enter&gt;</span>
+                            </div>
+                            <span></span>
+                            <span class="label-desc">to learn more about me!</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="action-item">
+                            <div class="label-group">
+                                <span class="prefix">type</span>
+                                <span class="leader">:</span>
+                                <span class="command">projects</span>
+                                <span class="leader">&lt;Enter&gt;</span>
+                            </div>
+                            <span></span>
+                            <span class="label-desc">to look at what I've done</span>
+                        </a>
 
-                <a href="" class="action-item">
-                    <div class="label-group">
-                        <span class="prefix">type</span>
-                        <span class="leader">:</span>
-                        <span class="command">about</span>
-                        <span class="leader">&lt;Enter&gt;</span>
-                    </div>
-                    <span class="label-desc">to learn more about me!</span>
-                </a>
-
-                <a href="" class="action-item">
-                    <div class="label-group">
-                        <span class="prefix">type</span>
-                        <span class="leader">:</span>
-                        <span class="command">projects</span>
-                        <span class="leader">&lt;Enter&gt;</span>
-                    </div>
-                    <span class="label-desc">to look at what I've done</span>
-                </a>
-
-                <a href="" class="action-item">
-                        <div class="label-group">
-                            <span class="prefix">type</span>
-                            <span class="leader">:</span>
-                            <span class="command">education</span>
-                            <span class="leader">&lt;Enter&gt;</span>
-                        </div>
-                    <span class="label-desc">to see where I studied</span>
-                </a>
-
+                    </li>
+                    <li>
+                        <a href="" class="action-item">
+                            <div class="label-group">
+                                <span class="prefix">type</span>
+                                <span class="leader">:</span>
+                                <span class="command">education</span>
+                                <span class="leader">&lt;Enter&gt;</span>
+                            </div>
+                            <div></div>
+                            <span class="label-desc">to see where I studied</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
         </div>
 
         <div class="action-panel">
-            <nav class="action-list" aria-label="Chat">
-
-                <a href="" class="action-item">
-                    <div class="label-group">
-                            <span class="prefix">type</span>
-                            <span class="leader">:</span>
-                            <span class="command">chat</span>
-                            <span class="leader">&lt;Enter&gt;</span>
-                    </div>
-                    <span class="label-desc">to......chat?</span>
-                </a>
-
+            <nav aria-label="Chat">
+                <ul class="action-list">
+                    <li>
+                        <a href="" class="action-item">
+                            <div class="label-group">
+                                <span class="prefix">type</span>
+                                <span class="leader">:</span>
+                                <span class="command">chat</span>
+                                <span class="leader">&lt;Enter&gt;</span>
+                            </div>
+                            <span></span>
+                            <span class="label-desc">to......chat?</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
         </div>
 
@@ -123,7 +129,6 @@
     <!-- </div> -->
 
     <!-- </div> -->
-
 </body>
 
 </html>
