@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neovim Startup Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Terminal Window Shell -->
+    <!-- <div class="terminal-container"> -->
+    <!--      Main Viewport -->
+    <!--     <div class="nvim-viewport"> -->
+    <!-- Dashboard Center View -->
+    <main class="dashboard-content">
+
+        <!-- Neovim ASCII Art Header -->
+        <pre class="ascii-banner">
+            <span class="accent-green">
+
+                | \ ||||//
+                ||\\ ||||/
+                || \\||| \
+                || \_|||\\
+
+            </span>
+        </pre>
+        <h1 class="panel-header">
+            <span><strong class="tag-ok">Nikola Kisiov</strong></span>
+            <span><strong class="tag-ver">v0.10.0</strong></span>
+        </h1>
+        <!-- Nav/panel -->
+        <div class="action-panel">
+            <nav class="action-list" aria-label="Navigation">
+
+                <a href="" class="action-item">
+                    <div class="label-group">
+                        <span class="prefix">type</span>
+                        <span class="leader">:</span>
+                        <span class="command">about</span>
+                        <span class="leader">&lt;Enter&gt;</span>
+                    </div>
+                    <span class="label-desc">to learn more about me!</span>
+                </a>
+
+                <a href="" class="action-item">
+                    <div class="label-group">
+                        <span class="prefix">type</span>
+                        <span class="leader">:</span>
+                        <span class="command">projects</span>
+                        <span class="leader">&lt;Enter&gt;</span>
+                    </div>
+                    <span class="label-desc">to look at what I've done</span>
+                </a>
+
+                <a href="" class="action-item">
+                        <div class="label-group">
+                            <span class="prefix">type</span>
+                            <span class="leader">:</span>
+                            <span class="command">education</span>
+                            <span class="leader">&lt;Enter&gt;</span>
+                        </div>
+                    <span class="label-desc">to see where I studied</span>
+                </a>
+
+            </nav>
+        </div>
+
+        <div class="action-panel">
+            <nav class="action-list" aria-label="Chat">
+
+                <a href="" class="action-item">
+                    <div class="label-group">
+                            <span class="prefix">type</span>
+                            <span class="leader">:</span>
+                            <span class="command">chat</span>
+                            <span class="leader">&lt;Enter&gt;</span>
+                    </div>
+                    <span class="label-desc">to......chat?</span>
+                </a>
+
+            </nav>
+        </div>
+
+        <!-- Footer Motto -->
+        <p class="dashboard-footer-msg">
+            "Modal editing at the speed of thought."
+        </p>
+
+    </main>
+    <!-- </div> -->
+
+    <!-- Statusline -->
+    <footer class="nvim-statusline">
+        <div class="status-left">
+            <div class="mode-pill">NORMAL</div>
+            <div class="git-branch">
+                <span style="color: var(--nvim-fg-normal);">index.html</span>
+            </div>
+            <div class="file-status">replace this div with the command line, when active</div>
+        </div>
+
+        <div class="status-right">
+            <div class="lsp-status">
+            </div>
+            <div class="file-encoding">unix</div>
+            <div class="cursor-pos">1:1 (Top)</div>
+        </div>
+    </footer>
+
+    <!-- Commandline / Bottom Line -->
+    <!-- <div class="nvim-cmdline"> -->
+    <!--     <span class="prompt">:</span> -->
+    <!--     <span class="cmd-text">checkhealth</span> -->
+    <!-- </div> -->
+
+    <!-- </div> -->
+
+</body>
+
+</html>

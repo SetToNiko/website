@@ -1,0 +1,499 @@
+/* ==========================================================================
+   NEOVIM VANILLA CSS TOKEN SYSTEM — TOKYO NIGHT
+   ========================================================================== */
+:root {
+  /* Surfaces & Canvas */
+  --nvim-bg-normal: #1a1b26;
+  --nvim-bg-nc: #16161e;
+  --nvim-bg-alt: #1f2335;
+  --nvim-bg-popup: #1f2335;
+  --nvim-bg-highlight: #292e42;
+  --nvim-bg-visual: #364a82;
+
+  /* Foreground & Typography */
+  --nvim-fg-normal: #c0caf5;
+  --nvim-fg-muted: #565f89;
+  --nvim-fg-comment: #565f89;
+  --nvim-fg-inverted: #1a1b26;
+
+  /* Editor Chrome & Gutter */
+  --nvim-ui-cursor: #c0caf5;
+  --nvim-ui-gutter: #1a1b26;
+  --nvim-ui-linenr: #3b4261;
+  --nvim-ui-linenr-active: #737aa2;
+  --nvim-ui-border: #292e42;
+  --nvim-ui-float-border: #7aa2f7;
+
+  /* Statusline & Bufferline */
+  --nvim-statusline-bg: #1f2335;
+  --nvim-statusline-fg: #a9b1d6;
+  --nvim-statusline-nc-bg: #16161e;
+  --nvim-statusline-nc-fg: #565f89;
+  --nvim-bufferline-bg: #16161e;
+
+  /* Modal Accents */
+  --nvim-mode-normal: #9ece6a;
+  --nvim-mode-insert: #7aa2f7;
+  --nvim-mode-visual: #bb9af7;
+  --nvim-mode-command: #e0af68;
+  --nvim-mode-replace: #f7768e;
+
+  /* Syntax Highlighting */
+  --nvim-syn-keyword: #bb9af7;
+  --nvim-syn-keyword-alt: #f7768e;
+  --nvim-syn-function: #7aa2f7;
+  --nvim-syn-type: #2ac3de;
+  --nvim-syn-string: #9ece6a;
+  --nvim-syn-number: #ff9e64;
+  --nvim-syn-boolean: #ff9e64;
+  --nvim-syn-variable: #c0caf5;
+  --nvim-syn-property: #73daca;
+  --nvim-syn-constant: #ff9e64;
+  --nvim-syn-operator: #89ddff;
+  --nvim-syn-delimiter: #a9b1d6;
+  --nvim-syn-special: #7dcfff;
+
+  /* LSP Diagnostics */
+  --nvim-diag-error: #f7768e;
+  --nvim-diag-warn: #e0af68;
+  --nvim-diag-info: #7aa2f7;
+  --nvim-diag-hint: #1abc9c;
+
+  /* Diff & Git */
+  --nvim-diff-add: #203b35;
+  --nvim-diff-add-fg: #9ece6a;
+  --nvim-diff-change: #283457;
+  --nvim-diff-change-fg: #7aa2f7;
+  --nvim-diff-delete: #3f2d3d;
+  --nvim-diff-delete-fg: #f7768e;      /* Typography & Metrics */
+      --nvim-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --nvim-font-size-sm: 11px;
+      --nvim-font-size-base: 13px;
+      --nvim-font-size-code: 14px;
+      --nvim-line-height-code: 1.5;
+      --nvim-radius-none: 0px;
+      --nvim-radius-sm: 4px;
+      --nvim-radius-md: 6px;
+      --nvim-shadow-float: 0 12px 32px rgba(0, 0, 0, 0.55);
+      --nvim-statusline-height: 32px;
+    }
+
+    /* Reset & Base Layout */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--nvim-bg-normal);
+      color: var(--nvim-fg-normal);
+      font-family: var(--nvim-font-mono);
+      font-size: var(--nvim-font-size-code);
+      line-height: var(--nvim-line-height-code);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* padding: 24px; */
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Outer Terminal Window Wrapper */ 
+    /* .terminal-container { */
+    /*   width: 100%; */
+    /*   max-width: 1120px; */
+    /*   height: 740px; */
+    /*   background-color: var(--nvim-bg-normal); */
+    /*   border-radius: 8px; */
+    /*   border: 1px solid var(--nvim-ui-border); */
+    /*   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05); */
+    /*   display: flex; */
+    /*   flex-direction: column; */
+    /*   overflow: hidden; */
+    /*   position: relative; */
+    /* } */
+
+
+    /* OS Terminal Titlebar */
+    .terminal-titlebar {
+      height: 38px;
+      background-color: var(--nvim-bg-nc);
+      border-bottom: 1px solid var(--nvim-ui-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      user-select: none;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .control-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-title {
+      font-size: var(--nvim-font-size-sm);
+      color: var(--nvim-fg-muted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terminal-title .shell-tag {
+      color: var(--nvim-mode-insert);
+      font-weight: 600;
+    }
+
+    .terminal-actions {
+      display: flex;
+      gap: 12px;
+      color: var(--nvim-fg-muted);
+      font-size: var(--nvim-font-size-sm);
+    }
+
+    /* Neovim Tab / Bufferline */
+    .nvim-bufferline {
+      height: 34px;
+      background-color: var(--nvim-bufferline-bg);
+      border-bottom: 1px solid var(--nvim-ui-border);
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+    }
+
+    .buffer-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      font-size: 12px;
+      color: var(--nvim-fg-muted);
+      background-color: var(--nvim-bg-nc);
+      border-right: 1px solid var(--nvim-ui-border);
+      border-top: 2px solid transparent;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .buffer-tab.active {
+      background-color: var(--nvim-bg-normal);
+      color: var(--nvim-fg-normal);
+      border-top-color: var(--nvim-syn-function);
+      font-weight: 500;
+    }
+
+    .buffer-icon {
+      color: var(--nvim-syn-string);
+    }
+    .buffer-icon.special {
+      color: var(--nvim-mode-visual);
+    }
+
+    /* Main Viewport & Startup Dashboard */
+    /* .nvim-viewport { */
+    /*   flex: 1; */
+    /*   display: flex; */
+    /*   position: relative; */
+    /*   overflow: hidden; */
+    /* } */
+
+    /* Left Minimal Gutter */
+    .nvim-gutter {
+      width: 44px;
+      background-color: var(--nvim-ui-gutter);
+      border-right: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      user-select: none;
+    }
+
+    .tilde-symbol {
+      color: var(--nvim-syn-function);
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    /* Main Startup Screen Body */
+    .dashboard-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 32px;
+      overflow-y: auto;
+      gap: 26px;
+    }
+
+    /* Neovim ASCII Banner */
+    .ascii-banner {
+      font-family: var(--nvim-font-mono);
+      font-size: 12px;
+      line-height: 1.25;
+      color: var(--nvim-mode-insert);
+      text-shadow: 0 0 16px rgba(97, 175, 239, 0.25);
+      user-select: none;
+      white-space: pre;
+      text-align: center;
+    }
+
+    .ascii-banner .accent-green { color: var(--nvim-syn-string); }
+    .ascii-banner .accent-blue  { color: var(--nvim-syn-function); }
+    .ascii-banner .accent-gold  { color: var(--nvim-ui-cursor); }
+
+    /* Metadata Badge */
+    /* .dashboard-meta { */
+    /*   display: flex; */
+    /*   align-items: space-between; */
+    /*   gap: 16px; */
+    /*   font-size: 12px; */
+    /*   color: var(--nvim-fg-comment); */
+    /*   background-color: var(--nvim-bg-alt); */
+    /*   padding: 6px 16px; */
+    /*   border-radius: var(--nvim-radius-sm); */
+    /*   border: 1px solid var(--nvim-ui-border); */
+    /* } */
+    /* .dashboard-meta span { */
+    /*   display: flex; */
+    /*   align-items: center; */
+    /*   gap: 6px; */
+    /* } */
+    .panel-header .tag-ok { color: var(--nvim-mode-normal); }
+    .panel-header .tag-ver { color: var(--nvim-syn-type); font-weight: 600; }
+
+    /* Action Groups (2-column layout) */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 290px;
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .action-panel {
+      background-color: var(--nvim-bg-alt);
+      border: 1px solid var(--nvim-ui-border);
+      /* border-radius: var(--nvim-radius-sm); */
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .panel-header {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--nvim-syn-string);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .action-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      /* min-width: 400px; */
+      gap: 6px;
+    }
+
+    .action-item {
+      display: flex;
+      align-items: center;
+      /* justify-content:space-between; */
+      padding: 5px 8px;
+      /* gap: 16px; */
+      /* border-radius: var(--nvim-radius-sm); */
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--nvim-fg-normal);
+      transition: background-color 0.15s ease;
+      font-size: 14px;
+    }
+
+    .action-item:hover,
+    .action-item.active {
+      background-color: var(--nvim-bg-highlight);
+    }
+
+    .action-item .label-group {
+      display: flex;
+      align-items: center;
+      /* gap: 8px; */
+    }
+
+    .action-item .icon {
+      color: var(--nvim-syn-function);
+      /* font-size: 13px; */
+      width: 16px;
+      text-align: center;
+    }
+
+    .action-item .prefix{
+      color: var(--nvim-syn-function);
+      /* font-size: 13px; */
+      width: 48px;
+      text-align: left;
+    }
+
+    .action-item .leader{
+      color: var(--nvim-syn-function);
+      /* font-size: 13px; */
+      text-align: left;
+    }
+
+    .label-desc {
+      font-size: 13px;
+      color: var(--nvim-syn-number);
+      /* background-color: var(--nvim-bg-normal); */
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    /* Live Cursor Element */
+    .vim-cursor-block {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background-color: var(--nvim-ui-cursor);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: cursorBlink 1.1s infinite steps(2, start);
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Footer Stats & Quotes */
+    .dashboard-footer-msg {
+      font-size: 12px;
+      color: var(--nvim-fg-comment);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Statusline */
+    .nvim-statusline {
+/* TODO: make height reactive to screen height */
+      height: var(--nvim-statusline-height, 26px);
+      background-color: var(--nvim-statusline-bg);
+      border-top: 1px solid var(--nvim-ui-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--nvim-statusline-fg);
+      user-select: none;
+      width: 100vw;
+    }
+
+    .status-left,
+    .status-right {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .mode-pill {
+      background-color: var(--nvim-mode-normal);
+      color: var(--nvim-fg-inverted);
+      font-weight: 700;
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.05em;
+    }
+
+    .git-branch {
+      background-color: var(--nvim-bg-highlight);
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--nvim-fg-normal);
+      font-size: 11px;
+    }
+    .git-branch .git-icon { color: var(--nvim-mode-replace); }
+
+    .file-status {
+      padding: 0 14px;
+      color: var(--nvim-fg-muted);
+      font-size: 11px;
+    }
+
+    .lsp-status {
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+    }
+    .lsp-item { display: flex; align-items: center; gap: 4px; }
+    .lsp-item.err { color: var(--nvim-diag-error); }
+    .lsp-item.warn { color: var(--nvim-diag-warn); }
+    .lsp-item.ok { color: var(--nvim-mode-normal); }
+
+    .file-encoding {
+      background-color: var(--nvim-bg-highlight);
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: var(--nvim-fg-normal);
+    }
+
+    .cursor-pos {
+      background-color: var(--nvim-mode-insert);
+      color: var(--nvim-fg-inverted);
+      font-weight: 700;
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    /* Commandline Prompt Bar */
+    .nvim-cmdline {
+        /* TODO: make height change according to screen size */
+      height: 24px;
+      background-color: var(--nvim-bg-normal);
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: var(--nvim-fg-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+    .nvim-cmdline .prompt {
+      color: var(--nvim-mode-command);
+      margin-right: 6px;
+      font-weight: 700;
+    }
+    .nvim-cmdline .cmd-text {
+      color: var(--nvim-fg-normal);
+    }
+  

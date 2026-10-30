@@ -34,6 +34,7 @@ function testBumps(testCases) {
             results.push(`case: ${element.commit}, expected: ${element.bump}, got: ${bumpType}`)
         }
     });
+
     if (results.length != 0) {
         console.log("Some tests failed: ");
         console.log(results);
