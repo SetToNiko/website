@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="dashboard-content">
+
+        <!-- Neovim ASCII Art Header -->
+        <span class="main-banner">
+            <img src="./res/under.svg" class="banner-content">
+            <img src="./res/construction.svg" class="banner-content">
+        </span>
+        <h1 class="panel-header">
+            <span><strong class="tag-ok">Nikola Kisiov</strong></span>
+            <span><strong class="tag-ver">v0.10.0</strong></span>
+        </h1>
+
+        <!-- Footer Motto -->
+        <p class="dashboard-footer-msg">
+            "Website coming soon!"
+        </p>
+
+    </main>
+    <!-- </div> -->
+
+    <!-- Statusline -->
+    <footer class="nvim-statusline">
+        <div class="status-left">
+            <div class="mode-pill">NORMAL</div>
+            <div class="git-branch">
+                <span style="color: var(--nvim-fg-normal);">index.html</span>
+            </div>
+            <div class="file-status"></div>
+        </div>
+
+        <div class="status-right">
+            <div class="lsp-status">
+            </div>
+            <div class="file-encoding">unix</div>
+            <div class="cursor-pos">1:1 (Top)</div>
+        </div>
+    </footer>
+</body>
+
+</html>
