@@ -65,7 +65,7 @@
   --nvim-diff-delete-fg: #f7768e;
 
   /* Typography & Metrics */
-  --nvim-font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --nvim-font-mono: "JetBrains Mono", monospace;
 
   --banner-height: 23px;
   --headline: 14px;
@@ -85,6 +85,38 @@
   --nvim-radius-md: 6px;
   --nvim-shadow-float: 0 12px 32px rgba(0, 0, 0, 0.55);
   --nvim-statusline-height: 32px;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./res/jetbrains-mono/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./res/jetbrains-mono/JetBrainsMono-SemiBold.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./res/jetbrains-mono/JetBrainsMono-Bold.woff2") format("woff2");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./res/jetbrains-mono/JetBrainsMono-ExtraBold.woff2") format("woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./res/jetbrains-mono/JetBrainsMono-ThinItalic.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: italic;
 }
 
 /* Reset & Base Layout */
