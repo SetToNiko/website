@@ -27,7 +27,6 @@
   --nvim-statusline-nc-bg: #16161e;
   --nvim-statusline-nc-fg: #565f89;
   --nvim-bufferline-bg: #16161e;
-
   /* Modal Accents */
   --nvim-mode-normal: #9ece6a;
   --nvim-mode-insert: #7aa2f7;
@@ -96,26 +95,26 @@
 @font-face {
   font-family: "JetBrains Mono";
   src: url("./res/jetbrains-mono/JetBrainsMono-SemiBold.woff2") format("woff2");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("./res/jetbrains-mono/JetBrainsMono-Bold.woff2") format("woff2");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("./res/jetbrains-mono/JetBrainsMono-ExtraBold.woff2") format("woff2");
+  src: url("./res/jetbrains-mono/JetBrainsMono-Bold.woff2") format("woff2");
   font-weight: 700;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./res/jetbrains-mono/JetBrainsMono-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
 }
 
 @font-face {
   font-family: "JetBrains Mono";
   src: url("./res/jetbrains-mono/JetBrainsMono-ThinItalic.woff2")
     format("woff2");
-  font-weight: 300;
+  font-weight: 100;
   font-style: italic;
 }
 
@@ -469,6 +468,7 @@ li {
 .dashboard-footer-msg {
   font-size: var(--subhead);
   color: var(--nvim-fg-comment);
+  font-weight: 100;
   font-style: italic;
   text-align: center;
 }
