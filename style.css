@@ -75,6 +75,10 @@
   --banner-cols: 1fr;
   --banner-justify: center;
 
+  --action-item-rows: 1fr 1fr;
+  --action-item-cols: 1fr;
+  --action-item-just: center;
+
   --nvim-font-size-sm: 11px;
   --nvim-font-size-base: 13px;
   --nvim-font-size-code: 14px;
@@ -152,6 +156,9 @@
     --headline: 19px;
     --subhead: 17px;
     --banner-cols: 0.2fr 1fr;
+    --action-item-rows: 1fr;
+    --action-item-cols: 1.5fr 1fr;
+    --action-item-just: left;
   }
 }
 
@@ -393,13 +400,14 @@ li {
 
 .action-item {
   display: grid;
-  grid-template-columns: 1.5fr 0.1fr 1fr;
+  grid-template-columns: var(--action-item-cols);
+  grid-template-rows: var(--action-item-rows);
   padding: 5px 8px;
   cursor: pointer;
   text-decoration: none;
   color: var(--nvim-fg-normal);
   transition: background-color 0.15s ease;
-  font-size: 14px;
+  font-size: var(--subhead);
 }
 
 .action-item:hover,
@@ -410,7 +418,8 @@ li {
 .action-item .label-group {
   display: flex;
   align-items: left;
-  min-width: 30ch;
+  justify-self: var(--action-item-just);
+  /* min-width: 30ch; */
   /* gap: 8px; */
 }
 
@@ -435,11 +444,13 @@ li {
 }
 
 .label-desc {
-  font-size: 13px;
+  /* font-size: 13px; */
   color: var(--nvim-syn-number);
   border-radius: 3px;
   font-weight: 400;
   text-align: left;
+  justify-self: var(--action-item-just);
+  font-size: var(--subhead);
 }
 
 /* Live Cursor Element */
