@@ -157,7 +157,7 @@
     --subhead: 17px;
     --banner-cols: 0.2fr 1fr;
     --action-item-rows: 1fr;
-    --action-item-cols: 1.5fr 1fr;
+    --action-item-cols: 1.3fr 1fr;
     --action-item-just: left;
   }
 }
@@ -417,10 +417,8 @@ li {
 
 .action-item .label-group {
   display: flex;
-  align-items: left;
   justify-self: var(--action-item-just);
-  /* min-width: 30ch; */
-  /* gap: 8px; */
+  gap: 5vw;
 }
 
 /* .action-item .icon { */
@@ -440,7 +438,13 @@ li {
 .action-item .leader {
   color: var(--nvim-syn-function);
   /* font-size: 13px; */
-  text-align: left;
+  justify-self: right;
+}
+
+.action-item .command {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
 }
 
 .label-desc {
@@ -450,7 +454,7 @@ li {
   font-weight: 400;
   text-align: left;
   justify-self: var(--action-item-just);
-  font-size: var(--subhead);
+  font-size: calc(var(--subhead) - 2px);
 }
 
 /* Live Cursor Element */
