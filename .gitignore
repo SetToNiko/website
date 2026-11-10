@@ -1,3 +1,4 @@
 node_modules/
 help/
 *.woff2
+.DS_Store
