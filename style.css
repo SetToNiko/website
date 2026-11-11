@@ -94,7 +94,7 @@ body {
   align-items: center;
   justify-content: center;
   /* padding: 24px; */
-  overflow: hidden;
+  overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -204,10 +204,11 @@ li {
 .dashboard-section {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
   padding: 0px 48px;
   width: 100vw;
   max-width: 1000px;
+  row-gap: 16px;
+  margin: 48px;
 }
 
 .lists {
@@ -251,19 +252,20 @@ li {
 .ascii-banner .accent-gold {
   color: var(--nvim-ui-cursor);
 }
-
-.panel-header .tag-ok {
-  color: var(--nvim-mode-normal);
-}
-
-.panel-header .tag-ver {
-  color: var(--nvim-syn-type);
-  font-weight: 600;
-}
-
 /* Action Groups (2-column layout) */
 
 .action-panel {
+  background-color: var(--nvim-bg-alt);
+  border: 1px solid var(--nvim-ui-border);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-panel-topnav {
+  transform: scale(0.75);
+  justify-self: right;
   background-color: var(--nvim-bg-alt);
   border: 1px solid var(--nvim-ui-border);
   padding: 14px 16px;
@@ -284,6 +286,16 @@ li {
   gap: 16px;
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  user-select: none;
+}
+
+.panel-header .tag-ok {
+  color: var(--nvim-mode-normal);
+}
+
+.panel-header .tag-ver {
+  color: var(--nvim-syn-type);
+  font-weight: 600;
 }
 
 .action-list {
@@ -301,13 +313,20 @@ li {
   cursor: pointer;
   text-decoration: none;
   color: var(--nvim-fg-normal);
-  transition: background-color 0.15s ease;
   font-size: var(--subhead);
 }
 
-.action-item:hover,
-.action-item.active {
+.action-item:hover {
   background-color: var(--nvim-bg-highlight);
+  transform: translateX(-5px) translateY(-5px);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.action-item:active {
+  transform: translateX(5px) translateY(5px) translateZ(10px);
+  box-shadow: inset 6px 6px 0px 0px rgba(0, 0, 0, 0.3);
+  background-color: var(--nvim-bg-normal);
+  user-select: none;
 }
 
 .action-item .label-group {
@@ -381,11 +400,14 @@ li {
   font-weight: 100;
   font-style: italic;
   text-align: center;
+  user-select: none;
 }
 
 /* Statusline */
 .nvim-statusline {
-  /* TODO: make height reactive to screen height */
+  position: sticky;
+  bottom: 0px;
+
   height: var(--nvim-statusline-height, 26px);
   background-color: var(--nvim-statusline-bg);
   border-top: 1px solid var(--nvim-ui-border);
