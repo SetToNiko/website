@@ -1,0 +1,91 @@
+:root {
+  /* Surfaces & Canvas */
+  --nvim-bg-normal: #1a1b26;
+  --nvim-bg-nc: #16161e;
+  --nvim-bg-alt: #1f2335;
+  --nvim-bg-popup: #1f2335;
+  --nvim-bg-highlight: #292e42;
+  --nvim-bg-visual: #364a82;
+
+  /* Foreground & Typography */
+  --nvim-fg-normal: #c0caf5;
+  --nvim-fg-muted: #565f89;
+  --nvim-fg-comment: #565f89;
+  --nvim-fg-inverted: #1a1b26;
+
+  /* Editor Chrome & Gutter */
+  --nvim-ui-cursor: #c0caf5;
+  --nvim-ui-gutter: #1a1b26;
+  --nvim-ui-linenr: #3b4261;
+  --nvim-ui-linenr-active: #737aa2;
+  --nvim-ui-border: #292e42;
+  --nvim-ui-float-border: #7aa2f7;
+
+  /* Statusline & Bufferline */
+  --nvim-statusline-bg: #1f2335;
+  --nvim-statusline-fg: #a9b1d6;
+  --nvim-statusline-nc-bg: #16161e;
+  --nvim-statusline-nc-fg: #565f89;
+  --nvim-bufferline-bg: #16161e;
+  /* Modal Accents */
+  --nvim-mode-normal: #9ece6a;
+  --nvim-mode-insert: #7aa2f7;
+  --nvim-mode-visual: #bb9af7;
+  --nvim-mode-command: #e0af68;
+  --nvim-mode-replace: #f7768e;
+
+  /* Syntax Highlighting */
+  --nvim-syn-keyword: #bb9af7;
+  --nvim-syn-keyword-alt: #f7768e;
+  --nvim-syn-function: #7aa2f7;
+  --nvim-syn-type: #2ac3de;
+  --nvim-syn-string: #9ece6a;
+  --nvim-syn-number: #ff9e64;
+  --nvim-syn-boolean: #ff9e64;
+  --nvim-syn-variable: #c0caf5;
+  --nvim-syn-property: #73daca;
+  --nvim-syn-constant: #ff9e64;
+  --nvim-syn-operator: #89ddff;
+  --nvim-syn-delimiter: #a9b1d6;
+  --nvim-syn-special: #7dcfff;
+
+  /* LSP Diagnostics */
+  --nvim-diag-error: #f7768e;
+  --nvim-diag-warn: #e0af68;
+  --nvim-diag-info: #7aa2f7;
+  --nvim-diag-hint: #1abc9c;
+
+  /* Diff & Git */
+  --nvim-diff-add: #203b35;
+  --nvim-diff-add-fg: #9ece6a;
+  --nvim-diff-change: #283457;
+  --nvim-diff-change-fg: #7aa2f7;
+  --nvim-diff-delete: #3f2d3d;
+  --nvim-diff-delete-fg: #f7768e;
+
+  /* Typography & Metrics */
+  --nvim-font-mono: "JetBrains Mono", monospace;
+
+  --banner-height: 23px;
+  --headline: 14px;
+  --subhead: 12px;
+  --footnote: 9px;
+  --statusline-text: 10px;
+
+  --banner-cols: 1fr;
+  --banner-justify: center;
+
+  --action-item-rows: 1fr 1fr;
+  --action-item-cols: 1fr;
+  --action-item-just: center;
+
+  --nvim-font-size-sm: 11px;
+  --nvim-font-size-base: 13px;
+  --nvim-font-size-code: 14px;
+  --nvim-line-height-code: 1.5;
+  --nvim-radius-none: 0px;
+  --nvim-radius-sm: 4px;
+  --nvim-radius-md: 6px;
+  --nvim-shadow-float: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --nvim-statusline-height: 32px;
+}
