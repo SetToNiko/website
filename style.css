@@ -102,16 +102,15 @@ li {
   list-style-type: none;
 }
 
-/* OS Terminal Titlebar */
 .terminal-titlebar {
-  height: 38px;
   background-color: var(--nvim-bg-nc);
   border-bottom: 1px solid var(--nvim-ui-border);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
+  justify-self: right;
+  padding: 0px 16px;
   user-select: none;
+  width: fit-content;
 }
 
 .window-controls {
@@ -185,27 +184,6 @@ li {
   color: var(--nvim-mode-visual);
 }
 
-/* Main Viewport & Startup Dashboard */
-/* .nvim-viewport { */
-/*   flex: 1; */
-/*   display: flex; */
-/*   position: relative; */
-/*   overflow: hidden; */
-/* } */
-
-/* Left Minimal Gutter */
-.nvim-gutter {
-  width: 44px;
-  background-color: var(--nvim-ui-gutter);
-  border-right: 1px solid rgba(255, 255, 255, 0.03);
-  padding-top: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  user-select: none;
-}
-
 .tilde-symbol {
   color: var(--nvim-syn-function);
   font-size: 14px;
@@ -221,6 +199,20 @@ li {
   justify-content: center;
   padding: 24px 32px;
   gap: 26px;
+}
+
+.dashboard-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 0px 48px;
+  width: 100vw;
+  max-width: 1000px;
+}
+
+.lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Neovim ASCII Banner */
@@ -270,13 +262,6 @@ li {
 }
 
 /* Action Groups (2-column layout) */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 290px;
-  gap: 20px;
-  width: 100%;
-  max-width: 1000px;
-}
 
 .action-panel {
   background-color: var(--nvim-bg-alt);
