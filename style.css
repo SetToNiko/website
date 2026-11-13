@@ -283,6 +283,18 @@ li {
   color: var(--nvim-fg-normal);
 }
 
+/* title row with option for clickable sprite on the right */
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.title-row img {
+  display: block;
+}
+
 /* Two text columns: stacked on phones, side by side from 750px */
 .columns {
   display: grid;

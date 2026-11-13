@@ -721,3 +721,48 @@ bike(
     "Malum Caedo, Ultramarines Sternguard veteran from Warhammer 40,000: Boltgun",
   );
 }
+
+/* ==== School logos, clickable, shown beside the school names on the education page ==== */
+const fromRows = (rows, colour) => { const c = new Canvas(); rows.forEach((r, y) => [...r].forEach((ch, x) => ch !== "." && c.set(x, y, colour))); return c; };
+
+/* ---- Collège de Bois-de-Boulogne: the yellow outlined B with its inner bracket ---- */
+fromRows([
+  "YYYYYYYYYYY.....",
+  "YYYYYYYYYYYYY...",
+  "YY.........YYY..",
+  "YY..........YY..",
+  "YY...YYYYY..YY..",
+  "YY...YYYYY..YY..",
+  "YY...YY....YYY..",
+  "YY...YY...YYY...",
+  "YY...YY....YYY..",
+  "YY...YY.....YYY.",
+  "YY...YYYYY...YY.",
+  "YY...YYYYY...YY.",
+  "YY..........YYY.",
+  "YY.........YYY..",
+  "YYYYYYYYYYYYY...",
+  "YYYYYYYYYYY.....",
+], "#ffc82e").svg("bdeb-logo", "Collège de Bois-de-Boulogne logo");
+
+/* ---- Collège Jean-de-Brébeuf: the burgundy B that ends in a shield point ---- */
+fromRows([
+  "RRRRRRRRR.....",
+  "RRRRRRRRRRR...",
+  "RRR.....RRRR..",
+  "RRR......RRR..",
+  "RRR......RRR..",
+  "RRR.....RRR...",
+  "RRRRRRRRRR....",
+  "RRRRRRRRRRRR..",
+  "RRR......RRRR.",
+  "RRR.......RRR.",
+  "RRR.......RRR.",
+  "RRR.......RRR.",
+  "RRRR.....RRRR.",
+  ".RRRR...RRRR..",
+  "..RRRRRRRRR...",
+  "...RRRRRRR....",
+  "....RRRRR.....",
+  ".....RRR......",
+], "#a3364a").svg("brebeuf-logo", "Collège Jean-de-Brébeuf logo");
