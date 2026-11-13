@@ -1,4 +1,4 @@
-// Generates the pixel-art keyboard sprites as SVG.
+// Generates the pixel-art keyboard and bike sprites as SVG.
 // Usage: node utils/sprites.js [outDir]   (default: res/images/sprites)
 // Each sprite pixel is drawn SCALE screen pixels wide at its natural size.
 import fs from "fs";
@@ -13,6 +13,18 @@ class Canvas {
   // keycap w px wide, 3 px tall: highlight row, base row, shade row
   cap(x, y, w, t) { this.rect(x, y, w, 1, t[0]); this.rect(x, y + 1, w, 1, t[1]); this.rect(x, y + 2, w, 1, t[2]); }
   mirrorInto(target, width) { for (const { x, y, c } of this.p.values()) { target.set(x, y, c); target.set(width - 1 - x, y, c); } }
+  line(x0, y0, x1, y1, c, thick = 1) {
+    const dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    let err = dx - dy, x = x0, y = y0;
+    for (;;) {
+      this.set(x, y, c);
+      if (thick > 1) dx >= dy ? this.set(x, y + 1, c) : this.set(x + 1, y, c);
+      if (x === x1 && y === y1) break;
+      const e2 = 2 * err;
+      if (e2 > -dy) { err -= dy; x += sx; }
+      if (e2 < dx) { err += dx; y += sy; }
+    }
+  }
   svg(name, title) {
     const px = [...this.p.values()];
     const W = Math.max(...px.map(p => p.x)) + 1, H = Math.max(...px.map(p => p.y)) + 1;
@@ -121,3 +133,86 @@ class Canvas {
   for (const [x, o] of cols.slice(2)) light(c, W - x - 3, o + 4);
   c.svg("corne", "Corne split keyboard with KAM Superuser keycaps");
 }
+
+/* ==== Bikes ==== */
+const RUBBER = "#454853", TAN = "#c9a36b", CARBON = "#2b2d36", SILVER = "#b9bcc4", STEEL = "#7d818c",
+      SPOKE = "#30333d", CHAIN = "#5d616d";
+
+// rings: colours from the outside in (index 0 = tread). Everything inside is spokes.
+function wheel(c, cx, cy, rings, disc) {
+  const R = 10;
+  for (let y = -R; y <= R; y++) for (let x = -R; x <= R; x++) {
+    const i = Math.round(R - Math.hypot(x, y));
+    if (i >= 0 && i < rings.length) c.set(cx + x, cy + y, rings[i]);
+  }
+  const inner = R - rings.length;
+  for (const [ax, ay] of [[1, 0], [0, 1], [0.7, 0.7], [0.7, -0.7]]) {
+    c.line(cx, cy, Math.round(cx + ax * inner), Math.round(cy + ay * inner), SPOKE);
+    c.line(cx, cy, Math.round(cx - ax * inner), Math.round(cy - ay * inner), SPOKE);
+  }
+  if (disc) for (const [x, y] of [[-2, -1], [-2, 0], [-2, 1], [2, -1], [2, 0], [2, 1], [-1, -2], [0, -2], [1, -2], [-1, 2], [0, 2], [1, 2]]) c.set(cx + x, cy + y, STEEL);
+  c.set(cx, cy, SILVER);
+}
+
+function bike(name, title, o) {
+  const c = new Canvas();
+  const wy = 22, rx = 11, fx = o.fx ?? 41;
+  const bb = [23, 24];
+  const st = [18, o.slope ? 10 : 8];              // top of seat tube
+  const htTop = [fx - 5, o.tall ? 6 : 7], htBot = [fx - 4, 11];
+  const saddleY = o.tall ? 2 : 3;
+
+  wheel(c, rx, wy, o.rings, o.disc);
+  wheel(c, fx, wy, o.rings, o.disc);
+
+  // drivetrain behind the frame
+  c.line(bb[0], bb[1] + 2, rx + 1, wy + 2, CHAIN);
+  c.set(rx, wy + 3, o.parts); c.set(rx + 1, wy + 4, o.parts);
+
+  // rear triangle
+  c.line(st[0] + 1, st[1] + 1, rx, wy, o.stays ?? o.frame);
+  if (o.dropped) { c.line(bb[0], bb[1], 17, 25, o.stays ?? o.frame); c.line(17, 25, rx, wy, o.stays ?? o.frame); }
+  else c.line(bb[0], bb[1], rx, wy, o.stays ?? o.frame);
+  // fork
+  c.line(htBot[0], htBot[1], fx, wy, o.fork ?? o.frame);
+  // seatpost + saddle
+  c.line(st[0], st[1], 17, saddleY + 1, o.post);
+  c.line(13, saddleY, 19, saddleY, o.saddle); c.set(13, saddleY - 1, o.saddle);
+  // main triangle
+  const t = o.thin ? 1 : 2;                       // main tube thickness
+  c.line(bb[0], bb[1], st[0], st[1], o.frame, t);
+  c.line(st[0] + 1, st[1], htTop[0], htTop[1] + 1, o.frame, o.fat ? 2 : 1);
+  c.line(htBot[0], htBot[1] - 1, bb[0] + 1, bb[1] - 1, o.accent ?? o.frame, t);
+  c.line(htTop[0], htTop[1], htBot[0], htBot[1], o.frame, t);
+  // stem + drop bars
+  const sy = htTop[1] - 1, sx = htTop[0], ex = sx + (o.stem ?? 3);
+  c.line(sx, sy, ex, sy, o.cockpit);
+  c.set(ex + 1, sy, o.tape); c.set(ex + 2, sy - 1, o.tape); c.set(ex + 2, sy, o.tape);
+  c.set(ex + 3, sy + 1, o.tape); c.set(ex + 3, sy + 2, o.tape); c.set(ex + 2, sy + 3, o.tape); c.set(ex + 1, sy + 3, o.tape);
+  // crank + chainring
+  for (const [x, y] of [[-1, -2], [0, -2], [1, -2], [-2, -1], [2, -1], [-2, 0], [2, 0], [-2, 1], [2, 1], [-1, 2], [0, 2], [1, 2]]) c.set(bb[0] + x, bb[1] + y, o.parts);
+  c.line(bb[0], bb[1], bb[0] + 3, bb[1] + 4, o.crank ?? o.parts);
+  c.line(bb[0] + 2, bb[1] + 5, bb[0] + 4, bb[1] + 5, o.parts);
+  c.set(bb[0], bb[1], SILVER);
+  c.svg(name, title);
+}
+
+bike("cervelo-r3", "2018 Cervelo R3, fluo yellow, carbon wheels and tanwall tires", {
+  frame: "#f1ee35", thin: true, rings: [RUBBER, TAN, CARBON, CARBON, CARBON],
+  post: CARBON, saddle: RUBBER, cockpit: RUBBER, tape: RUBBER, parts: STEEL, slope: true,
+});
+bike("cannondale-caad6", "Cannondale CAAD6 R1000, black and silver, HED Jet 6 wheels and tanwall tires", {
+  frame: "#3a3d47", accent: SILVER, fork: SILVER, stays: "#3a3d47", fat: true,
+  rings: [RUBBER, TAN, SILVER, CARBON, CARBON, CARBON],
+  post: SILVER, saddle: RUBBER, cockpit: SILVER, tape: "#e8e8ec", parts: SILVER,
+});
+bike("salsa-journeyer", "Salsa Journeyer, hi-vis yellow gravel bike", {
+  frame: "#c8f31d", fx: 42, tall: true, slope: true, fat: true, disc: true,
+  rings: [RUBBER, RUBBER, STEEL],
+  post: RUBBER, saddle: RUBBER, cockpit: RUBBER, tape: RUBBER, parts: RUBBER,
+});
+bike("open-wide", "OPEN WI.DE, ready-to-paint, shallow carbon wheels and tanwall tires", {
+  frame: "#6a6f7c", thin: true, slope: true, disc: true, dropped: true, stem: 4,
+  rings: [RUBBER, TAN, CARBON, CARBON],
+  post: CARBON, saddle: RUBBER, cockpit: CARBON, tape: RUBBER, parts: RUBBER,
+});
