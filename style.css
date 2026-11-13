@@ -270,7 +270,7 @@ li {
   grid-column: span 2;
 }
 
-/* Sprites that are links: hover/press behaviour shared with .action-item */
+/* Sprites that are links, hover/press behaviour like .action-item */
 .sprite-link {
   display: block;
   padding: 12px 8px;
