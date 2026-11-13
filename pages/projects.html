@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikola Kisiov</title>
+    <link rel="stylesheet" href="../style.css?v0.5.2" />
+  </head>
+  <body>
+    <main class="dashboard-content">
+      <div class="dashboard-section">
+        <h1 class="panel-header">Projects</h1>
+      </div>
+
+      <div class="action-panel-topnav">
+        <a href="/" class="action-item" draggable="false">
+          <div class="label-group">
+            <span class="prefix">type</span>
+            <span class="command">
+              <span class="leader">:</span>
+              <span class="action">home</span>
+              <span class="leader">&lt;Enter&gt;</span>
+            </span>
+          </div>
+          <span class="label-desc">to return home</span>
+        </a>
+      </div>
+
+      <div class="dashboard-section">
+        <h2 class="terminal-titlebar chapter">Team Projects</h2>
+        <h2 class="terminal-titlebar">Soteria</h2>
+
+        <div class="columns">
+          <div>
+            <p>
+              Soteria is a native app for small business management and
+              logistics, it's currently in development.<br> The app handles inventory,
+              services, labour, and it comes with a
+              web portal for managing appointment bookings.
+            </p>
+            <p>
+              It's built with Tauri and
+              Svelte on top of SQLite, using Rust, TypeScript and
+              JavaScript.
+
+              I'm managing it with a team using Agile and Scrum, with issues
+              and tickets tracked in Jira.            </p>
+            <p>
+              Upcoming features: predicting inventory usage to make reordering
+              more efficient, employee scheduling, and automating workload
+              management.
+            </p>
+          </div>
+          <div>
+            <figure class="sprite">
+              <img
+                src="../res/images/sprites/soteria-app.svg"
+                alt="Pixel art of an app window with an inventory list, a booking calendar and a usage chart"
+                draggable="false"
+              />
+              <figcaption>Soteria<br />inventory, bookings, forecasting</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="lists">
+          <ul>
+            <li><strong>Languages</strong></li>
+            <li>Rust</li>
+            <li>TypeScript</li>
+            <li>JavaScript</li>
+          </ul>
+
+          <ul>
+            <li><strong>Built with</strong></li>
+            <li>Tauri</li>
+            <li>Svelte</li>
+            <li>SQLite</li>
+          </ul>
+
+          <ul>
+            <li><strong>Process</strong></li>
+            <li>Agile / Scrum</li>
+            <li>GitHub</li>
+            <li>Jira</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2 class="terminal-titlebar">Cardex</h2>
+
+        <div class="columns">
+          <div>
+            <p>
+              Cardex is a forum for car enthusiasts. Alongside the message
+              boards, it has a car collection and configuration system that
+              lets people share their projects, passions and interests.
+            </p>
+            <p>
+              It was a team project, organised with a Kanban board and GitHub
+              issues. It runs on Node.js and Express with a React front end,
+              and uses two databases: MongoDB on the NoSQL side and Oracle for
+              SQL.
+            </p>
+          </div>
+          <div>
+            <figure class="sprite">
+              <img
+                src="../res/images/sprites/cardex-forum.svg"
+                alt="Pixel art of the Cardex forum home page, with the Cardex logo in the header and posts with car thumbnails"
+                draggable="false"
+              />
+              <figcaption>Cardex<br />a forum for car people</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="lists">
+          <ul>
+            <li><strong>Languages</strong></li>
+            <li>JavaScript</li>
+            <li>SQL</li>
+            <li>PL/SQL</li>
+          </ul>
+
+          <ul>
+            <li><strong>Built with</strong></li>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>React</li>
+            <li>Vite</li>
+            <li>Bootstrap</li>
+          </ul>
+
+          <ul>
+            <li><strong>Data &amp; process</strong></li>
+            <li>MongoDB</li>
+            <li>Oracle SQL</li>
+            <li>Kanban</li>
+            <li>GitHub issues</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2 class="terminal-titlebar chapter">Personal</h2>
+        <h2 class="terminal-titlebar">This Website</h2>
+
+        <div class="columns">
+          <div>
+            <p>
+              This website is an ongoing project. It's modelled after Neovim, and it's written in plain HTML,
+              CSS and a little JavaScript, with no framework.
+              While it's currently a static site with little to no features, I plan on adding keyboard based actions and navigation, as well as a live chat feature in the near future.
+            </p>
+          </div>
+          <div>
+            <a
+              href="https://github.com/SetToNiko/website"
+              class="sprite-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              draggable="false"
+            >
+              <figure class="sprite">
+                <img
+                  src="../res/images/sprites/website-terminal.svg"
+                  alt="Pixel art of this website's start screen"
+                  draggable="false"
+                />
+                <figcaption>This website<br />source on GitHub</figcaption>
+              </figure>
+            </a>
+          </div>
+        </div>
+
+        <div class="lists">
+          <ul>
+            <li><strong>Built with</strong></li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+
+          <ul>
+            <li><strong>Tooling</strong></li>
+            <li>Node.js</li>
+            <li>husky</li>
+            <li>commitlint</li>
+            <li>browser-sync</li>
+          </ul>
+
+          <ul>
+            <li><strong>Details</strong></li>
+            <li>JetBrains Mono</li>
+            <li>SVG pixel art</li>
+          </ul>
+        </div>
+      </div>
+      <div class="dashboard-section"></div>
+    </main>
+    <!-- Statusline -->
+    <footer class="nvim-statusline">
+      <div class="status-left">
+        <div class="mode-pill">NORMAL</div>
+        <div class="git-branch">
+          <span style="color: var(--nvim-fg-normal)">projects.html</span>
+        </div>
+        <div class="file-status"></div>
+      </div>
+
+      <div class="status-right">
+        <div class="lsp-status"></div>
+        <div class="file-encoding">unix</div>
+        <div class="cursor-pos">1:1 (Top)</div>
+      </div>
+    </footer>
+  </body>
+</html>
