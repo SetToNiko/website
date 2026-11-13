@@ -216,6 +216,45 @@ li {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+/* Pixel-art sprites: stacked on phones, 2x2 from 750px, 4 across from 1100px */
+.sprites {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+}
+
+@media screen and (min-width: 750px) {
+  .sprites {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .sprites {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.sprite {
+  display: grid;
+  justify-items: center;
+  align-content: end;
+  row-gap: 8px;
+  padding: 0 8px;
+}
+
+.sprite img {
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.sprite figcaption {
+  color: var(--nvim-fg-comment);
+  font-size: var(--nvim-font-size-sm);
+  text-align: center;
+}
+
 /* Neovim ASCII Banner */
 .ascii-banner {
   font-family: var(--nvim-font-mono);
