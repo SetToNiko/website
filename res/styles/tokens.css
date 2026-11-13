@@ -9,6 +9,7 @@
 
   /* Foreground & Typography */
   --nvim-fg-normal: #c0caf5;
+  --nvim-fg-bright: #dfe4fa;
   --nvim-fg-muted: #565f89;
   --nvim-fg-comment: #565f89;
   --nvim-fg-inverted: #1a1b26;
@@ -67,6 +68,7 @@
   --nvim-font-mono: "JetBrains Mono", monospace;
 
   --banner-height: 23px;
+  --chapter: 23px;
   --headline: 14px;
   --subhead: 12px;
   --footnote: 9px;
