@@ -358,7 +358,7 @@ li {
 }
 
 .panel-header {
-  font-size: var(--headline);
+  font-size: var(--chapter);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--nvim-fg-bright);
