@@ -210,16 +210,19 @@ li {
   justify-content: center;
   padding: 24px 32px;
   gap: 26px;
+  max-width: 100%;
 }
 
+/* 904px text column on wide screens; on narrow ones it fills .dashboard-content,
+   whose 32px padding plus the 16px here keeps the 48px side gutter */
 .dashboard-section {
   display: grid;
-  grid-template-columns: 1fr;
-  padding: 0px 48px;
-  width: 100vw;
-  max-width: 1000px;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 0px 16px;
+  width: 936px;
+  max-width: 100%;
   row-gap: 16px;
-  margin: 38px;
+  margin: 38px auto;
 }
 
 .lists {
