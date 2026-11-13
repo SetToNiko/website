@@ -265,6 +265,39 @@ li {
   text-align: center;
 }
 
+/* A sprite that takes two of the three .lists columns */
+.sprite.wide {
+  grid-column: span 2;
+}
+
+/* Sprites that are links: hover/press behaviour shared with .action-item */
+.sprite-link {
+  display: block;
+  padding: 12px 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--nvim-fg-normal);
+}
+
+/* Two text columns: stacked on phones, side by side from 750px */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 48px;
+}
+
+@media screen and (min-width: 750px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.columns > div {
+  display: grid;
+  align-content: space-between;
+  row-gap: 16px;
+}
+
 /* Neovim ASCII Banner */
 .ascii-banner {
   font-family: var(--nvim-font-mono);
@@ -365,13 +398,15 @@ li {
   font-size: var(--subhead);
 }
 
-.action-item:hover {
+.action-item:hover,
+.sprite-link:hover {
   background-color: var(--nvim-bg-highlight);
   transform: translateX(-5px) translateY(-5px);
   box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.3);
 }
 
-.action-item:active {
+.action-item:active,
+.sprite-link:active {
   transform: translateX(5px) translateY(5px) translateZ(10px);
   box-shadow: inset 6px 6px 0px 0px rgba(0, 0, 0, 0.3);
   background-color: var(--nvim-bg-normal);
