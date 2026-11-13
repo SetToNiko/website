@@ -419,13 +419,6 @@ li {
   gap: 5vw;
 }
 
-/* .action-item .icon { */
-/*     color: var(--nvim-syn-function); */
-/* font-size: 13px; */
-/*     width: 16px; */
-/*     text-align: center; */
-/* } */
-
 .action-item .prefix {
   color: var(--nvim-syn-function);
   /* font-size: 13px; */
@@ -443,6 +436,10 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: right;
+}
+
+.action {
+  color: var(--nvim-fg-bright);
 }
 
 .label-desc {
