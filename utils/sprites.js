@@ -766,3 +766,101 @@ fromRows([
   "....RRRRR.....",
   ".....RRR......",
 ], "#a3364a").svg("brebeuf-logo", "Collège Jean-de-Brébeuf logo");
+
+/* ==== Projects page ==== */
+{
+  // site palette (res/styles/tokens.css)
+  const BG = "#1a1b26", BG_NC = "#16161e", BG_ALT = "#1f2335", BG_HI = "#292e42", LINE = "#3b4261";
+  const FG = "#c0caf5", MUTED = "#565f89", DIM = "#737aa2", SOFT = "#a9b1d6";
+  const GREEN = "#9ece6a", BLUE = "#7aa2f7", PURPLE = "#bb9af7", GOLD = "#e0af68", RED = "#f7768e",
+        ORANGE = "#ff9e64", CYAN = "#2ac3de", SKY = "#7dcfff";
+
+  /* ---- Soteria: app window with inventory rows, a booking calendar and a usage chart ---- */
+  {
+    const c = new Canvas();
+    c.rect(0, 0, 40, 28, LINE); c.rect(1, 3, 38, 24, BG_ALT);
+    c.rect(1, 1, 38, 2, BG_HI); c.set(2, 1, RED); c.set(4, 1, GOLD); c.set(6, 1, GREEN);
+    // sidebar
+    c.rect(1, 3, 8, 24, BG_NC);
+    c.rect(2, 5, 5, 1, BLUE); c.rect(2, 8, 4, 1, MUTED); c.rect(2, 11, 5, 1, MUTED); c.rect(2, 14, 3, 1, MUTED);
+    // inventory rows with stock badges (one running low)
+    for (let i = 0; i < 4; i++) { c.rect(11, 5 + i * 3, 12 - (i % 2) * 3, 1, FG); c.rect(25, 5 + i * 3, 3, 1, i === 2 ? RED : GREEN); }
+    // booking calendar
+    c.rect(30, 5, 8, 1, PURPLE);
+    for (let j = 0; j < 3; j++) for (let i = 0; i < 3; i++)
+      c.rect(30 + i * 3, 7 + j * 3, 2, 2, i === 1 && j === 0 ? GOLD : i === 2 && j === 1 ? BLUE : MUTED);
+    // usage prediction chart
+    [2, 4, 3, 5, 6, 7].forEach((h, i) => c.rect(11 + i * 3, 25 - h, 2, h, i === 5 ? SKY : CYAN));
+    c.rect(10, 25, 19, 1, MUTED);
+    c.svg("soteria-app", "Soteria app window with inventory, a booking calendar and a usage chart");
+  }
+
+  /* ---- Cardex: a Reddit-style forum home page in the Cardex logo colours, logo in the header ---- */
+  {
+    const c = new Canvas();
+    // colours taken from the Cardex logo
+    const C_RED = "#e3211c", C_YELLOW = "#f7d21e", C_NAVY = "#1c2f8c", C_WHITE = "#ffffff", C_BLACK = "#11131c";
+    const PAGE = "#dfe3f0", CARD = "#ffffff", TEXT = "#1c2f8c", GREY = "#9aa3c4", PALE = "#c9cfe3";
+    const W = 56, H = 40;
+    c.rect(0, 0, W, H, LINE);
+    c.rect(1, 10, W - 2, H - 11, PAGE);
+
+    // header bar: logo, search box, sign-up button
+    c.rect(1, 1, W - 2, 9, C_NAVY);
+    // logo: the red and white device...
+    c.rect(2, 2, 5, 3, C_RED); c.rect(2, 5, 5, 1, C_BLACK); c.rect(2, 6, 5, 2, C_WHITE); c.set(4, 5, C_WHITE); c.set(3, 2, "#f47a76");
+    // ...the yellow wordmark...
+    const FONT = {
+      C: ["###", "#..", "#..", "#..", "###"], A: [".#.", "#.#", "###", "#.#", "#.#"], R: ["##.", "#.#", "##.", "#.#", "#.#"],
+      D: ["##.", "#.#", "#.#", "#.#", "##."], E: ["###", "#..", "##.", "#..", "###"], X: ["#.#", "#.#", ".#.", "#.#", "#.#"],
+    };
+    [..."CARDEX"].forEach((ch, i) => FONT[ch].forEach((row, y) => [...row].forEach((p, x) => p === "#" && c.set(9 + i * 4 + x, 2 + y, C_YELLOW))));
+    // ...and the red swoosh under it
+    c.rect(8, 8, 25, 1, C_RED); c.rect(29, 7, 5, 1, C_RED); c.rect(10, 8, 12, 1, "#f47a76");
+    c.rect(36, 3, 10, 4, C_WHITE); c.rect(37, 4, 5, 2, PALE);
+    c.rect(48, 3, 6, 4, C_YELLOW);
+
+    // left sidebar: navigation
+    c.rect(1, 10, 9, H - 11, CARD);
+    [[12, C_RED, 4], [15, C_YELLOW, 5], [18, C_NAVY, 3]].forEach(([y, col, w]) => { c.rect(2, y, 2, 2, col); c.rect(5, y, w, 1, TEXT); });
+    c.rect(2, 22, 7, 1, PALE);
+    [[25, 5], [28, 4], [31, 5], [34, 3]].forEach(([y, w]) => { c.rect(2, y, 1, 1, GREY); c.rect(4, y, w, 1, GREY); });
+
+    // feed: three posts, each with vote arrows, title, meta line, actions and a car thumbnail
+    const cars = [C_RED, C_YELLOW, C_NAVY];
+    [11, 20, 29].forEach((y, i) => {
+      c.rect(11, y, 30, 8, CARD);
+      c.set(13, y + 1, C_RED); c.rect(12, y + 2, 3, 1, C_RED);                 // upvote
+      c.rect(12, y + 4, 3, 1, TEXT);                                            // score
+      c.rect(12, y + 5, 3, 1, GREY); c.set(13, y + 6, GREY);                    // downvote
+      c.rect(17, y + 1, 14 - i * 2, 1, TEXT); c.rect(17, y + 3, 9 + i, 1, GREY);
+      c.rect(17, y + 6, 4, 1, PALE); c.rect(23, y + 6, 4, 1, PALE);
+      c.rect(33, y + 1, 7, 6, "#bfe3f7"); c.rect(33, y + 5, 7, 2, "#8e96ad");   // sky + road
+      c.rect(35, y + 3, 3, 1, cars[i]); c.rect(34, y + 4, 5, 1, cars[i]);       // the car
+      c.set(34, y + 5, C_BLACK); c.set(38, y + 5, C_BLACK);
+    });
+
+    // right sidebar: popular boards, and a join card
+    c.rect(42, 11, 12, 15, CARD); c.rect(42, 11, 12, 3, C_RED);
+    [[16, C_YELLOW, 6], [19, C_NAVY, 5], [22, C_RED, 6]].forEach(([y, col, w]) => { c.rect(43, y, 2, 2, col); c.rect(46, y, w, 1, TEXT); });
+    c.rect(42, 28, 12, 9, CARD); c.rect(44, 30, 8, 1, GREY); c.rect(44, 33, 8, 2, C_YELLOW);
+    c.svg("cardex-forum", "Cardex forum home page, Reddit-style, in the Cardex logo colours");
+  }
+
+  /* ---- This website: the start screen in miniature ---- */
+  {
+    const c = new Canvas();
+    c.rect(0, 0, 40, 26, LINE); c.rect(1, 1, 38, 24, BG);
+    // ascii banner
+    for (const [x, y] of [[17, 3], [19, 3], [20, 3], [22, 3], [17, 4], [18, 4], [20, 4], [21, 4], [17, 5], [19, 5], [21, 5], [22, 5]]) c.set(x, y, GREEN);
+    // name + version
+    c.rect(11, 8, 11, 1, GREEN); c.rect(23, 8, 5, 1, CYAN);
+    // nav panels
+    c.rect(7, 10, 26, 8, BG_ALT);
+    for (let i = 0; i < 3; i++) { c.rect(9, 11 + i * 2, 3, 1, BLUE); c.rect(13, 11 + i * 2, 7 + i, 1, FG); c.rect(23, 11 + i * 2, 8 - i, 1, ORANGE); }
+    c.rect(7, 19, 26, 3, BG_ALT); c.rect(9, 20, 3, 1, BLUE); c.rect(13, 20, 5, 1, FG); c.rect(23, 20, 5, 1, ORANGE);
+    // statusline
+    c.rect(1, 23, 38, 2, BG_ALT); c.rect(1, 23, 6, 2, GREEN); c.rect(7, 23, 7, 2, BG_HI); c.rect(33, 23, 6, 2, BLUE);
+    c.svg("website-terminal", "This website's start screen in miniature");
+  }
+}
